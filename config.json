@@ -1,0 +1,9 @@
+{
+  "data_path": "data/data.csv",
+  "results_folder": "results/",
+  "model_path": "models/lstm_model.keras",
+  "sequence_length": 30,
+  "epochs": 20,
+  "batch_size": 32,
+  "validation_split": 0.2
+}
