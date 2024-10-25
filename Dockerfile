@@ -1,5 +1,5 @@
 # Use the python base image
-FROM python:3.10
+FROM python
 
 # Set the working directory to /app
 WORKDIR /app

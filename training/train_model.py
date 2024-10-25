@@ -1,11 +1,11 @@
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential 
-from tensorflow.keras.layers import LSTM, Dense, Dropout 
+import numpy as np # type: ignore
+import pandas as pd # type: ignore
+from sklearn.preprocessing import MinMaxScaler # type: ignore
+from tensorflow.keras.models import Sequential  # type: ignore
+from tensorflow.keras.layers import LSTM, Dense, Dropout  # type: ignore
 import json
 import sys
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 
 #the configuration file
 import sys

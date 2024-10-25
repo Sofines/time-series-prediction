@@ -1,40 +1,34 @@
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import load_model
+import numpy as np # type: ignore
+import pandas as pd # type: ignore
+from sklearn.preprocessing import MinMaxScaler # type: ignore
+from tensorflow.keras.models import load_model # type: ignore
 import json
 import sys
 
-# Load the configuration file
+#the configuration file
 config_file = sys.argv[1]
 with open(config_file, 'r') as config:
     settings = json.load(config)
 
-# Access the settings
+#the settings
 data_path = settings['data_path']
 model_path = settings['model_path']
 sequence_length = settings['sequence_length']
 results_folder = settings['results_folder']
 
-# Ensure results folder path ends with a slash
 if not results_folder.endswith('/'):
     results_folder += '/'
 
-# Load the data
 data = pd.read_csv(data_path)
 
-# Convert saledate to datetime and sort the data
 data['saledate'] = pd.to_datetime(data['saledate'])
 data = data.sort_values('saledate')
 
-# Select the MA column for LSTM
 values = data['MA'].values.reshape(-1, 1)
 
-# Normalize the data
 scaler = MinMaxScaler(feature_range=(0, 1))
 scaled_values = scaler.fit_transform(values)
 
-# Prepare the dataset for LSTM
 x = []
 y = []
 for i in range(len(scaled_values) - sequence_length):
@@ -88,7 +82,7 @@ with open(results_folder + 'evaluation_metrics.json', 'w') as json_file:
 print("Metrics saved to results/evaluation_metrics.json")
 
 # Visualization
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 plt.figure(figsize=(10, 6))
 plt.plot(actual_values, color='blue', label='Actual MA')
 plt.plot(predicted_values, color='orange', label='Predicted MA')
